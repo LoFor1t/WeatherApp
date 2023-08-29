@@ -3,7 +3,7 @@
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/style.css">
-  <title>Sigh Up</title>
+  <title>Sigh In</title>
 </head>
 <body>
 <div class="mask d-flex align-items-center h-100 gradient-custom-3">
@@ -14,7 +14,7 @@
           <div class="card-body p-5">
             <h2 class="text-uppercase text-center mb-5">Sign in</h2>
 
-            <form th:method="POST" action="/users">
+            <form th:method="POST" action="/signin">
               <div class="form-outline mb-4">
                 <input name="login" type="text" id="login" class="form-control form-control-lg" />
                 <label class="form-label" for="login">Your Login</label>
@@ -31,6 +31,10 @@
 
               <div class="d-flex justify-content-center">
                 <input type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Sign in">
+              </div>
+
+              <div class="d-flex justify-content-center">
+                <p>Don't have an account - <a href="/users/new">Sign up!</a></p>
               </div>
             </form>
           </div>
