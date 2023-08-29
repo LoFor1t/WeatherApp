@@ -4,4 +4,5 @@ import com.LoFor1t.WeatherApp.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
+    boolean existsByLogin(String login);
 }

@@ -14,20 +14,21 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                            <form method="post" action="users">
+                            <form th:method="POST" action="/users">
                                 <div class="form-outline mb-4">
-                                    <input type="text" id="login" class="form-control form-control-lg" />
+                                    <input name="login" type="text" id="login" class="form-control form-control-lg" />
                                     <label class="form-label" for="login">Your Login</label>
+                                    <!--/*@thymesVar id="userExist" type="java.lang.Boolean"*/-->
+                                    <p th:if="${userExist==true}" class="text-danger">User with this login is already exist!</p>
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <input type="password" id="password" class="form-control form-control-lg" />
+                                    <input name="password" type="password" id="password" class="form-control form-control-lg" />
                                     <label class="form-label" for="password">Password</label>
                                 </div>
 
                                 <div class="d-flex justify-content-center">
-                                    <input type="submit"
-                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Register">
+                                    <input type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Register">
                                 </div>
                             </form>
                         </div>
