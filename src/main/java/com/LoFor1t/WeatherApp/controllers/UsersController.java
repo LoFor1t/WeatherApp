@@ -30,6 +30,6 @@ public class UsersController {
             return "newuser";
         }
         userRepository.save(newUser);
-        return "signin";
+        return "redirect:/signin";
     }
 }

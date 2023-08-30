@@ -40,6 +40,6 @@ public class SignInController {
 
         signInService.createSession(login, response);
 
-        return "mainPage";
+        return "redirect:/locations";
     }
 }
