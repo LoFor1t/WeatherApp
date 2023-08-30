@@ -1,3 +1,5 @@
 spring.datasource.url=jdbc:postgresql://localhost:5432/yourdatabse
 spring.datasource.username=username
 spring.datasource.password=password
+
+openWeatherAPI.key = your API key for openWeather service
