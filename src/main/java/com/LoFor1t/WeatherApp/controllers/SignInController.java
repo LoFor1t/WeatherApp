@@ -28,6 +28,7 @@ public class SignInController {
 
     @PostMapping
     public String singInUser(@RequestParam("login") String login, @RequestParam("password") String password, Model model, HttpServletResponse response) {
+        model.addAttribute("login", login);
         if (!userRepository.existsByLogin(login)) {
             model.addAttribute("userNotExist", true);
             return "signin";

@@ -16,7 +16,7 @@
 
             <form th:method="POST" action="/signin">
               <div class="form-outline mb-4">
-                <input name="login" type="text" id="login" class="form-control form-control-lg" />
+                <input name="login" type="text" id="login" class="form-control form-control-lg" th:value="${login}" />
                 <label class="form-label" for="login">Your Login</label>
                 <!--/*@thymesVar id="userNotExist" type="java.lang.Boolean"*/-->
                 <p th:if="${userNotExist==true}" class="text-danger">User with this login doesn't exist!</p>

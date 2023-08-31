@@ -27,6 +27,7 @@ public class UsersController {
         User newUser = User.builder().login(login.toLowerCase()).password(encryptedPassword).build();
         if (userRepository.existsByLogin(login.toLowerCase())) {
             model.addAttribute("userExist", true);
+            model.addAttribute("login", login);
             return "newuser";
         }
         userRepository.save(newUser);
