@@ -1,6 +1,7 @@
 package com.LoFor1t.WeatherApp.services;
 
 import com.LoFor1t.WeatherApp.entities.Session;
+import com.LoFor1t.WeatherApp.entities.User;
 import com.LoFor1t.WeatherApp.repositories.SessionRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +16,34 @@ public class SessionService {
         this.sessionRepository = sessionRepository;
     }
 
-    public Integer getUserIdBySession(String sessionId) {
+    public Session getSessionById(String sessionId) {
         if (sessionId.isEmpty()) {
             return null;
         }
 
         Optional<Session> session = sessionRepository.findById(sessionId);
 
-        if (session.isEmpty()) {
+        return session.orElse(null);
+
+    }
+
+    public Integer getUserIdBySession(String sessionId) {
+        Session session = getSessionById(sessionId);
+
+        if (session == null) {
             return null;
         }
 
-        return session.get().getUser().getId();
+        return session.getUser().getId();
+    }
 
+    public User getUserBySession(String sessionId) {
+        Session session = getSessionById(sessionId);
+
+        if (session == null) {
+            return null;
+        }
+
+        return session.getUser();
     }
 }

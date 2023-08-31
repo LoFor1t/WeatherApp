@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+<form th:method="GET" action="/locations/search">
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="input-group mb-3 col-sm-3">
+            <label for="cityName"></label>
+            <input name="cityName" type="text" id="cityName" class="form-control form-control-lg" placeholder="City name"/>
+            <button type="submit" class="btn btn-success btn-lg gradient-custom-4 text-light">Search</button>
+        </div>
+    </div>
+</form>
+<div class="weather-app">
+    <div class="container">
+        <div class="row">
+            <div class="border rounded">
+                <div class="weather-card">
+                    <div class="weather-header">
+                        <h3 th:text="${location.name}">City name</h3>
+                        <p>Current temperature: <strong th:text="${location.temperature}">5.42°C</strong></p>
+                        <p>Latitude: <strong th:text="${location.latitude}">Latitude coordinates</strong></p>
+                        <p>Latitude: <strong th:text="${location.longitude}">Longitude coordinates</strong></p>
+                        <form th:action="@{/locations/addToUser}" method="post" th:object="${location}">
+                            <input th:name="name" th:value="${location.name}" type="hidden">
+                            <input th:name="latitude" th:value="${location.latitude}" type="hidden">
+                            <input th:name="longitude" th:value="${location.longitude}" type="hidden">
+                            <input type="submit" value="Add this place">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

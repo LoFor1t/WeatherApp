@@ -1,36 +1,44 @@
 package com.LoFor1t.WeatherApp.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "locations")
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@Setter
 @Builder
+@ToString
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    private int id;
 
-    String name;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    User user;
+    private User user;
 
-    float latitude;
+    private float latitude;
 
-    float longitude;
+    private float longitude;
 
-    public Location(String name, User user, float latitude, float longitude) {
+    @Transient
+    private float temperature;
+
+    @Transient
+    private String weather;
+
+
+    public Location(String name, User user, float latitude, float longitude, float temperature, String weather) {
         this.name = name;
         this.user = user;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.temperature = temperature;
+        this.weather = weather;
     }
 }
