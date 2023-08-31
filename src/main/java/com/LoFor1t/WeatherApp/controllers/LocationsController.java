@@ -41,6 +41,12 @@ public class LocationsController {
         return "mainPage";
     }
 
+    @DeleteMapping
+    public String deleteLocationFromUser(@RequestParam int locationId) {
+        locationRepository.deleteById(locationId);
+        return "redirect:/locations";
+    }
+
     @GetMapping("/search")
     public String searchPlaces(@CookieValue(value = "sessionId", defaultValue = "") String sessionId, @RequestParam(value = "cityName", defaultValue = "") String cityName, Model model) throws URISyntaxException, IOException, InterruptedException {
         Integer userId = sessionService.getUserIdBySession(sessionId);

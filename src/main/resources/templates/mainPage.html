@@ -27,6 +27,10 @@
                             <p>Current temperature: <strong th:text="${location.temperature}">5.42°C</strong></p>
                             <p>Latitude: <strong th:text="${location.latitude}">Latitude coordinates</strong></p>
                             <p>Latitude: <strong th:text="${location.longitude}">Longitude coordinates</strong></p>
+                            <form th:action="@{/locations}" th:method="delete">
+                                <input th:name="locationId" th:value="${location.id}" type="hidden">
+                                <input class="btn btn-danger" type="submit" value="Delete this place">
+                            </form>
                         </div>
                     </div>
                 </div>

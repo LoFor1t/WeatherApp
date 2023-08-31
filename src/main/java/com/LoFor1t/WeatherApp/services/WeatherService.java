@@ -51,7 +51,9 @@ public class WeatherService {
         ArrayList<Location> APILocations = new ArrayList<>();
 
         for (Location location: userLocations) {
-            APILocations.add(getLocationByCoordinates(location));
+            Location APILocation = getLocationByCoordinates(location);
+            APILocation.setId(location.getId());
+            APILocations.add(APILocation);
         }
 
         return APILocations;
